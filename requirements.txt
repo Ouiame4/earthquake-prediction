@@ -1,0 +1,24 @@
+# Kafka
+kafka-python==2.0.2
+
+# Data Processing
+pandas==2.2.0
+numpy==1.26.3
+
+# Machine Learning
+xgboost==2.0.3
+scikit-learn==1.4.0
+
+# Geospatial
+geopy==2.4.1
+
+# Visualization
+streamlit==1.30.0
+plotly==5.18.0
+
+# Utils
+requests==2.31.0
+python-dotenv==1.0.1
+
+# Testing
+pytest==7.4.4
