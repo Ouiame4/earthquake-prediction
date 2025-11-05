@@ -1,0 +1,95 @@
+hostPort: kafka:9101
+ssl: false
+lowercaseOutputName: false
+lowercaseOutputLabelNames: false
+
+rules:
+  # Messages in per second
+  - pattern: kafka.server<type=BrokerTopicMetrics, name=MessagesInPerSec, topic=(.+)><>Count
+    name: kafka_topic_messages_in_total
+    labels:
+      topic: "$1"
+    type: COUNTER
+
+  # Bytes in per second
+  - pattern: kafka.server<type=BrokerTopicMetrics, name=BytesInPerSec, topic=(.+)><>Count
+    name: kafka_topic_bytes_in_total
+    labels:
+      topic: "$1"
+    type: COUNTER
+
+  # Bytes out per second
+  - pattern: kafka.server<type=BrokerTopicMetrics, name=BytesOutPerSec, topic=(.+)><>Count
+    name: kafka_topic_bytes_out_total
+    labels:
+      topic: "$1"
+    type: COUNTER
+
+  # Fetch requests
+  - pattern: kafka.server<type=BrokerTopicMetrics, name=TotalFetchRequestsPerSec, topic=(.+)><>Count
+    name: kafka_topic_fetch_requests_total
+    labels:
+      topic: "$1"
+    type: COUNTER
+
+  # Produce requests
+  - pattern: kafka.server<type=BrokerTopicMetrics, name=TotalProduceRequestsPerSec, topic=(.+)><>Count
+    name: kafka_topic_produce_requests_total
+    labels:
+      topic: "$1"
+    type: COUNTER
+
+  # Partition count
+  - pattern: kafka.server<type=ReplicaManager, name=PartitionCount><>Value
+    name: kafka_replica_manager_partition_count
+    type: GAUGE
+
+  # Leader count
+  - pattern: kafka.server<type=ReplicaManager, name=LeaderCount><>Value
+    name: kafka_replica_manager_leader_count
+    type: GAUGE
+
+  # Under replicated partitions
+  - pattern: kafka.server<type=ReplicaManager, name=UnderReplicatedPartitions><>Value
+    name: kafka_replica_manager_under_replicated_partitions
+    type: GAUGE
+
+  # ISR shrinks and expands
+  - pattern: kafka.server<type=ReplicaManager, name=IsrShrinksPerSec><>Count
+    name: kafka_replica_manager_isr_shrinks_total
+    type: COUNTER
+
+  - pattern: kafka.server<type=ReplicaManager, name=IsrExpandsPerSec><>Count
+    name: kafka_replica_manager_isr_expands_total
+    type: COUNTER
+
+  # Request queue size
+  - pattern: kafka.network<type=RequestChannel, name=RequestQueueSize><>Value
+    name: kafka_request_channel_queue_size
+    type: GAUGE
+
+  # Active controller count
+  - pattern: kafka.controller<type=KafkaController, name=ActiveControllerCount><>Value
+    name: kafka_controller_active_count
+    type: GAUGE
+
+  # Offline partitions
+  - pattern: kafka.controller<type=KafkaController, name=OfflinePartitionsCount><>Value
+    name: kafka_controller_offline_partitions
+    type: GAUGE
+
+  # Log size
+  - pattern: kafka.log<type=Log, name=Size, topic=(.+), partition=(.+)><>Value
+    name: kafka_log_size_bytes
+    labels:
+      topic: "$1"
+      partition: "$2"
+    type: GAUGE
+
+  # Log end offset
+  - pattern: kafka.log<type=Log, name=LogEndOffset, topic=(.+), partition=(.+)><>Value
+    name: kafka_log_end_offset
+    labels:
+      topic: "$1"
+      partition: "$2"
+    type: GAUGE

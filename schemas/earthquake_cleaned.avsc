@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "EarthquakeCleaned",
+  "namespace": "com.earthquake.cleaned",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "timestamp_utc", "type": "string"},
+    {"name": "magnitude", "type": "double"},
+    {"name": "severity", "type": "string"},
+    {"name": "depth_km", "type": "double"},
+    {"name": "depth_category", "type": "string"},
+    {"name": "latitude", "type": "double"},
+    {"name": "longitude", "type": "double"},
+    {"name": "danger_score", "type": "double"},
+    {"name": "risk_level", "type": "int"},
+    {"name": "processing_timestamp", "type": "string"},
+    {"name": "schema_version", "type": "string"}
+  ]
+}

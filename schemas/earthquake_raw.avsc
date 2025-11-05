@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "EarthquakeRaw",
+  "namespace": "com.earthquake.raw",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "timestamp", "type": "long"},
+    {"name": "timestamp_updated", "type": ["null", "long"], "default": null},
+    {"name": "magnitude", "type": ["null", "double"], "default": null},
+    {"name": "magnitude_type", "type": ["null", "string"], "default": null},
+    {"name": "location", "type": ["null", "string"], "default": null},
+    {"name": "depth_km", "type": ["null", "double"], "default": null},
+    {"name": "latitude", "type": ["null", "double"], "default": null},
+    {"name": "longitude", "type": ["null", "double"], "default": null},
+    {"name": "alert_level", "type": "string", "default": "none"},
+    {"name": "felt_reports", "type": ["null", "int"], "default": null},
+    {"name": "cdi", "type": ["null", "double"], "default": null},
+    {"name": "mmi", "type": ["null", "double"], "default": null},
+    {"name": "tsunami", "type": "int", "default": 0},
+    {"name": "significance", "type": ["null", "int"], "default": null},
+    {"name": "network", "type": ["null", "string"], "default": null},
+    {"name": "source", "type": "string"},
+    {"name": "ingestion_timestamp", "type": "string"},
+    {"name": "api_version", "type": "string"}
+  ]
+}
